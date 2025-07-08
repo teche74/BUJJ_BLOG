@@ -1,16 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Creative Learning Book</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buzz Blog</title>
   <link rel="stylesheet" href="../../assets/css/oops_index.css">
-</head>
-<body>
-  <header class = "topic">Object Oriented Programming</header>
 
-  <div class="note intro">
-    oops is a programming paradigm that uses objects to design software. It allows for encapsulation, inheritance, and polymorphism, making code more modular and reusable.
+</head>
+
+<body>
+
+  <header class="topic main_heading">Object Oriented Programming</header>
+
+  <div class="note intro important-note">
+    ⚠️ Heads up: Everything I share here is based on how I’ve understood the concepts as a student. If anything seems
+    off or confusing, feel free to reach out or cross-check it elsewhere. Learning is a two-way journey!
   </div>
+
+  <!-- Introduction to OOP -->
+  <div class="cloud-box">
+    <p>
+      Back in the early days of coding, most programs were written using something called <strong>procedural
+        programming</strong>.
+      This simply meant writing step-by-step instructions, like following a recipe. You define functions, give them
+      data, and run them in order.
+    </p>
+
+    <p>
+      While that worked fine for small programs, it got tricky as things got bigger. Since the code and the data it used
+      were handled separately,
+      managing complex programs became messy, especially when multiple parts needed to use or change the same data.
+    </p>
+
+    <p>
+      To fix this, programmers came up with a better approach called <strong>Object-Oriented Programming (OOP)</strong>.
+      It groups both data and related functions together into something called an <strong>object</strong>. This makes
+      the code easier to organize, reuse, and understand.
+    </p>
+  </div>
+
+  <!-- Classes -->
+  <div class="classes cloud-box">
+    <h1>Classes</h1>
+
+    <p>
+      A <strong>class</strong> is like a blueprint or template. It defines how something should behave and what it
+      should contain — like the attributes (e.g., name, color) and the behaviors (e.g., move, stop) of a car.
+    </p>
+
+    <figure class="concept-image">
+      <img src="/assets/images/realworldexample.png" alt="Example of Class from real world object" />
+      <figcaption class="caption">A real-world analogy: designing the idea of a car (class)</figcaption>
+    </figure>
+
+    <p>
+      There are mainly two types of classes you’ll hear about:
+    </p>
+    <ul>
+      <li><strong>Concrete Classes</strong>: These are regular classes you can use to create real objects (instances).
+      </li>
+      <li><strong>Abstract Classes</strong>: These are incomplete classes that act like ideas or templates. You can't
+        create objects from them directly — they need more details first.</li>
+    </ul>
+
+    <figure class="concept-image">
+      <img src="/assets/images/classtypes_.png" alt="Types of Class" />
+      <figcaption class="caption">Concrete vs Abstract Class Overview</figcaption>
+    </figure>
+
+    <p><em>We’ll explore abstract classes more in upcoming sections. 😊</em></p>
+  </div>
+
+  <!-- Objects -->
+  <div class="objects cloud-box">
+    <h1>Objects</h1>
+
+    <p>
+      An <strong>object</strong> is like a real-world thing created from a class blueprint. It holds actual values and
+      can do things using the functions defined in the class.
+    </p>
+
+    <figure class="concept-image">
+      <img src="/assets/images/object_example.png" alt="Example of Object from real world object" />
+      <figcaption class="caption">A real-world car object made from the 'Car' class</figcaption>
+    </figure>
+
+    <p>
+      There are two main ways to create objects in languages like C++:
+    </p>
+
+    <ol>
+      <li>
+        <strong>1. Stack Object Creation:</strong><br>
+        This is when you create the object directly in memory. It gets destroyed automatically when it goes out of
+        scope.
+        <pre class="code-block"><code>// C++ example
+class Car {
+public:
+    void drive() { /* ... */ }
+};
+
+int main() {
+    Car myCar; // Stack object
+    myCar.drive();
+    // myCar is destroyed automatically
+}
+</code></pre>
+      </li>
+
+      <li>
+        <strong>2. Dynamic Object Creation:</strong><br>
+        This method gives you more control. You create the object using <code>new</code> and must manually delete it to
+        avoid memory leaks.
+        <pre class="code-block"><code>// C++ example
+Car* myCarPtr = new Car(); // Dynamic object
+myCarPtr->drive();
+delete myCarPtr; // You must delete it manually
+</code></pre>
+      </li>
+    </ol>
+
+    <p>
+      🔁 In short: <strong>stack objects</strong> are easy to manage, while <strong>dynamic objects</strong> give you
+      more control but require extra care.
+    </p>
+  </div>
+
+  <div class="note2">
+    <strong>Quick Recap of OOP Concepts</strong>
+
+    <p style="font-style: italic; margin-bottom: 16px; color: #6c4f00;">
+      ✨ You can <strong>zoom in or out</strong> using your mouse scroll wheel, and <strong>click and drag</strong> the
+      diagram to explore different parts. It’s like moving around a real whiteboard — helpful for revising all the key
+      concepts at your own pace!
+    </p>
+
+    <div id="svg-viewer"
+      style="width: 100%; max-width: 900px; height: 500px; overflow: hidden; position: relative; border: 2px solid #ccc; border-radius: 12px; margin: 20px auto;">
+
+      <div id="transform-wrapper" style="transform: scale(0.9); transform-origin: center; cursor: grab;">
+        <img id="zoomable-image" src="/assets/exclidraw_items/oops.svg" alt="OOP Recap" width="900" height="600"
+          style="display: block;" />
+      </div>
+
+    </div>
+  </div>
+
+  <script src="/assets/js/oops_index.js"></script>
 </body>
+
 </html>

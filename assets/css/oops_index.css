@@ -14,15 +14,19 @@
 }
 
 @import url('https://fonts.cdnfonts.com/css/pencil-2');
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Rye&display=swap');
 
 body {
-    font-family: 'MyCustomFont', 'Inter', sans-serif;
     background-color: #fefcf9;
     margin: 0;
     padding: 40px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.main_heading {
+    font-family: 'MyCustomFont', sans-serif;
 }
 
 header.topic {
@@ -76,4 +80,94 @@ header.topic::after {
     background-color: #fff3cd;
     border-color: #ffeeba;
     font-family: 'journal', sans-serif;
+}
+
+
+/* cloud box */
+.cloud-box {
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 600 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23fff9e6' stroke='%23f9e79f' stroke-width='6' d='M150,100 Q130,40 200,60 Q250,10 300,60 Q370,30 400,90 Q470,60 500,100 Q570,90 580,150 Q600,200 570,250 Q590,310 500,300 Q450,370 380,340 Q300,400 250,340 Q180,370 120,310 Q50,280 80,230 Q30,190 50,130 Q90,100 150,100 Z' /%3E%3C/svg%3E") no-repeat center / cover;
+    padding: 50px;
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 40px auto;
+    color: #333;
+    border-radius: 30px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    border: 2px dashed #f9e79f;
+}
+
+.classes h1 {
+    font-family: 'Rye', serif;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: #5c4400;
+    text-align: center;
+}
+
+
+/* concept image  */
+.concept-image {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.concept-image img {
+    max-width: 90%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.caption {
+    font-family: 'journal', cursive;
+    font-size: 1.5rem;
+    color: #5c4400;
+    margin-top: 10px;
+    text-align: center;
+    background-color: #fff3cd;
+    padding: 6px 12px;
+    border-radius: 10px;
+    display: inline-block;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.code-block {
+    background-color: #2d2d2d;
+    color: #f8f8f2;
+    padding: 16px;
+    border-radius: 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    overflow-x: auto;
+    margin: 16px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.code-block code {
+    white-space: pre-wrap;
+}
+
+.note2 {
+    background: #fef3d3;
+    border: 3px dashed #ffcc70;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 18px;
+    padding: 24px 30px;
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #444;
+    margin: 40px auto;
+    max-width: 1000px;
+    position: relative;
+}
+
+.note-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 20px;
+    color: #b75d00;
 }
