@@ -171,3 +171,24 @@ header.topic::after {
     margin-bottom: 20px;
     color: #b75d00;
 }
+
+/* class  components image */
+
+.class_compo_image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.class_compo_image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.class_compo_image .caption {
+    margin-top: 0.5rem;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #444;
+}
