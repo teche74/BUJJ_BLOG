@@ -1,0 +1,356 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Cabin+Sketch:wght@400;700&family=Delius&family=Grechen+Fuemen&family=Permanent+Marker&family=Protest+Revolution&family=Rock+Salt&family=Rye&display=swap');
+/* General Styling */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fafafa;
+    color: #333;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    background-color: #d1e828;
+    color: #333;
+    padding: 60px 20px;
+    text-align: center;
+    border-bottom: 2px solid #e0e0e0;
+    font-family: "Permanent Marker", cursive;
+    font-weight: 600;
+    font-style: normal;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+header p {
+    font-size: 2.2rem;
+    color: #777;
+}
+
+header img {
+    margin-top: 20px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #fff;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #d1ee17;
+}
+
+
+/* Section Styling */
+
+.section {
+    padding: 40px 0;
+    border-bottom: 1px solid #ddd;
+    font-family: "Delius", cursive;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    color: #d1ee17;
+    margin-bottom: 20px;
+}
+
+.section p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.section img {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+/* Lists */
+.section ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.section li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.section li::before {
+    content: "✔";
+    color: #fa0404;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Footer */
+footer {
+    background-color: #f4f4f4;
+    padding: 20px 0;
+    text-align: center;
+    color: #555;
+    font-size: 0.9rem;
+    margin-top: 40px;
+    border-top: 3px solid #ddd;
+}
+
+/* table  */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table thead {
+    background-color: #d1ee17;
+    color: white;
+}
+
+table th,
+table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+/* media element */
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .section h2 {
+        font-size: 1.5rem;
+    }
+
+    nav a {
+        padding: 8px 12px;
+    }
+
+    table th,
+    table td {
+        padding: 8px;
+    }
+}
+
+
+/* custom table */
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.custom-table th {
+    background-color: #ffc107;
+    color: #212529;
+    padding: 14px;
+    font-weight: bold;
+    border: 1px solid #e0e0e0;
+}
+
+.custom-table td {
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    color: #333;
+}
+
+.custom-table tr:nth-child(even) {
+    background-color: #e3f2fd;
+}
+
+.custom-table tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.custom-table tr:hover {
+    background-color: #bbdefb;
+    transition: background-color 0.2s ease-in-out;
+}
+
+
+/* custom-table2 */
+.custom-table2 {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.custom-table2 th {
+    background-color: #ffc107;
+    /* Hadoop yellow */
+    color: #212529;
+    padding: 14px;
+    font-weight: bold;
+    border: 1px solid #e0e0e0;
+}
+
+.custom-table2 td {
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    color: #333;
+}
+
+.custom-table2 tr:nth-child(even) {
+    background-color: #e3f2fd;
+    /* Light blue */
+}
+
+.custom-table2 tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.custom-table2 tr:hover {
+    background-color: #bbdefb;
+    /* Slightly darker blue */
+    transition: background-color 0.2s ease-in-out;
+}
+
+
+/* chart */
+.chart-container {
+    width: 100%;
+    /* Full width */
+    max-width: 600px;
+    /* Limit maximum width */
+    margin: 20px auto;
+    /* Center the charts */
+    padding: 20px;
+    background-color: #f9f9f9;
+    /* Light gray background */
+    border: 1px solid #ddd;
+    /* Light border */
+    border-radius: 12px;
+    /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Soft shadow */
+}
+
+canvas {
+    width: 100% !important;
+    height: auto !important;
+}
+
+
+
+/* Styling specific to #section3 */
+#section3 {
+    padding: 40px 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+#section3 .container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#section3 h2, 
+#section3 h3 {
+    color: #007bff;
+    margin-bottom: 16px;
+}
+
+#section3 p {
+    margin-bottom: 16px;
+}
+
+#section3 ul, 
+#section3 ol {
+    padding-left: 20px;
+    margin-bottom: 16px;
+}
+
+#section3 li {
+    margin-bottom: 8px;
+}
+
+#section3 strong {
+    color: #ff4500;
+}
+
+#section3 img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 12px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+}
+
+#section3 em {
+    color: #d9534f;
+    font-style: normal;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    #section3 .container {
+        padding: 0 10px;
+    }
+}

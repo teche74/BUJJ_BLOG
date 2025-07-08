@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hadoop Learning Guide</title>
+    <link rel="stylesheet" href="../assets/css/hadoop_index.css" />
+    <script src="../assets/js/hadoop_index.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+
+    <header>
+        <div class="container">
+            <h1>Learn Hadoop</h1>
+            <p>Your structured path to mastering Hadoop!</p>
+        </div>
+
+        <div>
+            <img src="../assets/images/Apache Hadoop.png" height="300px" title="hadoop image">
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#core">Core Concepts</a></li>
+                <li><a href="#hands-on">Hands-On Implementation</a></li>
+                <li><a href="#advanced">Advanced Topics</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="section1" class="section">
+        <div class="container">
+            <h2>Why Hadoop ? 🧐</h2>
+            <p>Being part of progressive civilization, we currently living in <strong>digital era</strong> means data is
+                everywhere. We evolved so much such that nowadays every indivisual is generating
+                <strong>GigaBytes</strong> of data on daily basis...
+            </p>
+            <img src="../assets/images/evolution_of_data.png" title="evolution of humans and effect on data generation"
+                height="300px">
+
+            <p>To deal with this we significantly improves our storage with time, but haven't evolved much in improving
+                accessing speed. Also the writting speed is more worse than read.</p>
+            <p>One Approach to deal with it would be reading data in parallel from different sources as it significantly
+                increases throughput. Lets simplify what i want to say : </p>
+            <p>
+            <p>
+                Imagine you have a massive library representing our vast storage capacity. Over the years, we've built
+                larger libraries, but the speed at which a single librarian can retrieve and read a book hasn’t improved
+                much. Additionally, copying (or writing) new books into the library takes even longer than reading them.
+            </p>
+
+            <img src="../assets/images/single_librarian.png" title="single librarian dealing with massive storage"
+                height="400px">
+
+            <p>
+                Now, picture this: instead of relying on just one librarian to handle all requests, you bring in several
+                librarians who can work simultaneously. Each librarian goes to a different section of the library and
+                retrieves or copies books in parallel. By doing this, the overall process speeds up dramatically because
+                you’re not waiting for one slow librarian to finish before starting another task.
+            </p>
+
+            <img src="../assets/images/parallel_execution.png" title="parallel execution due to mulitple librarians" ,
+                height="400px">
+
+            <p>In technical terms:</p>
+            <ul>
+                <li><strong>Storage Capacity:</strong> Our libraries (storage devices) have grown huge over time.</li>
+                <li><strong>Access Speed:</strong> The speed at which a single librarian (or device) can retrieve data
+                    hasn’t kept pace.</li>
+                <li><strong>Read vs. Write:</strong> Retrieving books (reading data) is faster than copying new ones
+                    (writing data).</li>
+                <li><strong>Parallel Reading:</strong> Using multiple librarians (parallel processing) allows us to pull
+                    data from different parts of the library at the same time, increasing overall throughput.</li>
+            </ul>
+
+            <p>So thats mean we have solved the issue 😁. Well Yes, but not completely whenever we are dealing with
+                distributed envoirments there are scenraio we have to keep in mind that occurs. </p>
+        </div>
+
+        <div class="container">
+            <h2>Difficulties When Working in a Parallel Access Scenario 😲</h2>
+            <p>Let's talk about them one by one:</p>
+
+            <h3>Case 1: <strong>Hardware Failure</strong></h3>
+            <p>
+                Our main aim is to improve data access, which means we have to access data in a parallel manner.
+                To achieve this, we must ensure that our data is stored in different destinations or partitioned into
+                multiple parts so that parallel access can happen. To do so we can have namespaces or different
+                commodity hardwares creating network for distributed envoirment.
+            </p>
+
+            <img src="../assets/images/dist_env.png" title="distributed envoirment" height="300px">
+
+            <p>Here comes actual problem when dealing with multiple systems, there always a chance that one could fail.
+                This failure leads to loss acess to the data chunk that is owned by failure node or device.</p>
+
+            <img src="../assets/images/node_fail.png" title="distributed envoirment" height="300px">
+
+            <p>
+                <strong>Solution to this Case : <span>Replication</span></strong>
+                <br>
+                Replication is a technique through which mulitple copies of data is generated and stored in different
+                systems so that if a system shuts, we can serve the data through another system. We call this
+                <strong>RAID (Redundant Array of Independent Disks)</strong> however it is not used in Hadoop because it
+                works on Hadoop Distributed File System (HDFS). We will talk about this later breifly.
+            </p>
+
+            <img src="../assets/images/replication_strategy.png" title="replication in distributed envoirment"
+                height="300px">
+
+            <div class="container">
+                <h1>RAID (Redundant Array of Independent Disks)</h1>
+                <p>
+                    RAID stands for <strong>Redundant Array of Independent (or Inexpensive) Disks</strong>.
+                    It is a data storage virtualization technology that combines multiple physical drives into a single
+                    logical unit to:
+                </p>
+                <ul>
+                    <li>Improve performance</li>
+                    <li>Increase fault tolerance (redundancy)</li>
+                    <li>Enhance data availability</li>
+                </ul>
+
+                <h2>Purpose of RAID</h2>
+                <p>
+                    RAID was created to solve limitations in early storage systems, such as low reliability and slow
+                    access speeds.
+                    It allows data to be distributed and managed across multiple drives, enabling faster parallel access
+                    and recovery from hardware failure.
+                </p>
+
+                <h2>How RAID Works</h2>
+                <p>
+                    RAID combines multiple physical disks using one of the following methods:
+                </p>
+                <ul>
+                    <li>
+                        <strong>Striping:</strong> Data is divided into small blocks and spread across multiple disks.
+                        This increases performance since multiple disks can read/write data simultaneously.
+                    </li>
+                    <li>
+                        <strong>Mirroring:</strong> Data is duplicated on two or more disks.
+                        Improves fault tolerance because a backup copy is always available.
+                    </li>
+                    <li>
+                        <strong>Parity:</strong> Parity data is calculated and stored across disks.
+                        If one disk fails, the missing data can be rebuilt using the parity information.
+                    </li>
+                </ul>
+
+                <h2>Types of RAID Levels</h2>
+                <p>
+                    Here are the most common RAID configurations:
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>RAID Level</th>
+                            <th>Technique</th>
+                            <th>Minimum Drives</th>
+                            <th>Fault Tolerance</th>
+                            <th>Performance</th>
+                            <th>Use Case</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>RAID 0</td>
+                            <td>Striping</td>
+                            <td>2</td>
+                            <td>No</td>
+                            <td>High</td>
+                            <td>High-speed processing</td>
+                        </tr>
+                        <tr>
+                            <td>RAID 1</td>
+                            <td>Mirroring</td>
+                            <td>2</td>
+                            <td>Yes</td>
+                            <td>Good</td>
+                            <td>Critical data storage</td>
+                        </tr>
+                        <tr>
+                            <td>RAID 5</td>
+                            <td>Striping + Parity</td>
+                            <td>3</td>
+                            <td>1 disk failure</td>
+                            <td>Good</td>
+                            <td>General storage with fault tolerance</td>
+                        </tr>
+                        <tr>
+                            <td>RAID 6</td>
+                            <td>Striping + Dual Parity</td>
+                            <td>4</td>
+                            <td>2 disk failures</td>
+                            <td>Good</td>
+                            <td>High availability</td>
+                        </tr>
+                        <tr>
+                            <td>RAID 10</td>
+                            <td>Striping + Mirroring</td>
+                            <td>4</td>
+                            <td>Yes</td>
+                            <td>Excellent</td>
+                            <td>High-speed + redundancy</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                <h2>Advantages of RAID</h2>
+                <ul>
+                    <li>Increased speed through parallel access</li>
+                    <li>Fault tolerance through mirroring and parity</li>
+                    <li>Higher storage capacity</li>
+                </ul>
+
+                <h2>Disadvantages of RAID</h2>
+                <ul>
+                    <li>Complex to set up and manage</li>
+                    <li>Performance bottlenecks in RAID 5 and 6 during rebuild</li>
+                    <li>No redundancy in RAID 0</li>
+                </ul>
+            </div>
+
+            <h3>Case 2: <strong>Combining Parallely Processed Data</strong></h3>
+            <p>
+                We have solved the issue for delayed (read and write) operations but this create a mess it leads us to
+                another condition where we have to deal with how to combine the data that is extracted from different
+                sources. If you think it is such a tedious and challenging task.
+            </p>
+
+            <p>To deal with this hadoop introduces <strong>Map-Reduce</strong> provides a programming model. It helps in
+                converting data into key-value pairs to deal with this. This hadoop paradign made of 2 different
+                components. Map Component and Reduce Component and Map-Reduce acts like interface between these two
+                where mixing occurs.</p>
+
+            <p>In short what we can say that HDFS is basically for storage purpose and Map-Reduce is used for Analysis
+                or Computation</p>
+
+            <img src="../assets/images/hadoop_comp.png" alt="hadoop components" height="300px">
+
+
+        </div>
+
+    </section>
+
+    <section id="section2" class="section">
+        <div class="container">
+            <h2>Concept Of Map Reduce</h2>
+            <p>As we think about each queery we execute, we have to process entire dataset or good portion of it. It
+                appers to be a brute force approach. Map-Reduce acts like a batch querry processor which means we can
+                execute querry againt whole dataset in reasonable time.</p>
+
+            <h3>Why Use Map-Reduce ?</h3>
+            <p>We can use databases with lot of disks for large-scale batch analysis !!! The problem with this approach
+                is related to disk trend which says that seek time is more slower than transfer rate.</p>
+            <p>
+            <h4>Problem with Database Approach:</h4>
+            <ul>
+                <li><strong>Seek Time:</strong> The time taken to move the disk head to a particular location on the
+                    disk for read or write operations.</li>
+                <li><strong>Highly Preferable for cases where read and write is done multiple time.</strong> As
+                    Databases work on concept of B-Tree which means we have to apply sort/merge opertation for each
+                    insertion which is ineffecient as compared to map-reduce.</li>
+            </ul>
+            <img src="../assets/images/database_ineffi.png" alt="database ineffeciency">
+
+            </p>
+
+            <p>So Map-Reduce best fits in this scenario because we are doing ad-hoc analysis (Method of anlayzing data
+                to answer specific question or address problem that arises in a moment) in batch fashion. It means that
+                it is well suited for the application which works on <strong>written-once and read-multiple</strong>
+                methodology.</p>
+
+            <h3>Comparison Between RDBMS and MapReduce</h3>
+
+            <table class="custom-table">
+                <tr>
+                    <th>Attribute</th>
+                    <th>RDBMS</th>
+                    <th>MapReduce</th>
+                </tr>
+                <tr>
+                    <td><strong>Data Size</strong></td>
+                    <td>Handles GB to TB of data efficiently</td>
+                    <td>Designed for PB-scale data processing</td>
+                </tr>
+                <tr>
+                    <td><strong>Access</strong></td>
+                    <td>Supports fast, random access using indexes</td>
+                    <td>Optimized for batch processing, not real-time</td>
+                </tr>
+                <tr>
+                    <td><strong>Update</strong></td>
+                    <td>Allows real-time updates and transactions</td>
+                    <td>Not suitable for real-time updates</td>
+                </tr>
+                <tr>
+                    <td><strong>Structure</strong></td>
+                    <td>Structured data with fixed schema (tables)</td>
+                    <td>Semi-structured or unstructured data</td>
+                </tr>
+                <tr>
+                    <td><strong>Integrity</strong></td>
+                    <td>Strong ACID compliance</td>
+                    <td>No ACID support, focuses on eventual consistency</td>
+                </tr>
+                <tr>
+                    <td><strong>Scaling</strong></td>
+                    <td>Vertical scaling (limited by hardware)</td>
+                    <td>Horizontal scaling (adds more nodes)</td>
+                </tr>
+            </table>
+
+
+            <p>Databases are designed for structured data, while Hadoop MapReduce operates well on semi-structured or
+                unstructured data.
+                (You might be wondering how? 🧐)
+                MapReduce processes data at runtime by interpreting it during the processing phase.</p>
+
+            <p>MapReduce is a **linearly scalable programming model**, which means a programmer needs to write two
+                separate functions:
+                **Map function** and **Reduce function**.
+                These functions work on key-value pairs, transforming one set of key-value pairs into another.
+                Both functions are independent of each other, meaning the output of the Map function is processed by the
+                Reduce function without any direct dependency between them.</p>
+
+            <p>Both functions depend on two key parameters:
+            <ul>
+                <li>
+                    <strong>Size of Input Data:</strong>
+                    <ul>
+                        <li>Larger input data increases the number of splits and mappers, which can lead to longer
+                            processing times.</li>
+                        <li>If the data size exceeds memory or disk capacity, it increases I/O load and network traffic,
+                            slowing down processing.</li>
+                        <li><strong>Example:</strong> Processing <strong>10 GB</strong> of data may take a few minutes,
+                            but processing <strong>1 PB</strong> could require significant resources and time unless
+                            scaled efficiently.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Number of Clusters Operating the Job:</strong>
+                    <ul>
+                        <li>More clusters enable higher parallelism, reducing overall processing time.</li>
+                        <li>A higher number of clusters improves fault tolerance — if a node fails, another node can
+                            take over the task.</li>
+                        <li><strong>Example:</strong> Processing <strong>1 TB</strong> of data with <strong>10
+                                clusters</strong> may take several hours, but with <strong>100 clusters</strong>, it
+                            could finish within minutes.</li>
+                    </ul>
+                </li>
+            </ul>
+
+
+            </p>
+
+            <h4>Summary of Performance Factors:</h4>
+            <table class="custom-table2">
+                <tr>
+                    <th>Factor</th>
+                    <th>Effect on Performance</th>
+                    <th>How to Optimize</th>
+                </tr>
+                <tr>
+                    <td><strong>Size of Input Data</strong></td>
+                    <td>Larger data increases processing time and I/O load.</td>
+                    <td>Split data into optimal block sizes and use efficient shuffling.</td>
+                </tr>
+                <tr>
+                    <td><strong>Number of Clusters</strong></td>
+                    <td>More clusters improve parallelism and reduce processing time.</td>
+                    <td>Balance cluster count to avoid under- or over-utilization.</td>
+                </tr>
+            </table>
+
+            <h3>Understanding Linear Scalability in MapReduce</h3>
+
+            <p>
+                MapReduce is a <strong>linearly scalable programming model</strong>. This means that:
+            </p>
+            <ul>
+                <li>
+                    If the <strong>input data size doubles</strong>, the job will take <strong>twice as long</strong> to
+                    finish.
+                </li>
+                <li>
+                    However, if you <strong>double the number of clusters</strong>, the job will run in approximately
+                    the <strong>same time</strong> as the original one.
+                </li>
+            </ul>
+
+            <p>
+                The <strong>Map function</strong> and <strong>Reduce function</strong> are independent of the size of
+                the data or the cluster size. Therefore, they can handle small and large datasets without modification.
+            </p>
+
+            <h4>Effect of Input Data Size on Processing Time</h4>
+            <div class="chart-container">
+                <canvas id="inputDataChart"></canvas>
+            </div>
+
+            <h4>Effect of Number of Clusters on Processing Time</h4>
+            <div class="chart-container">
+                <canvas id="clusterChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <section id="section3" class="section">
+        <div class="container">
+            <h2>More About Map-Reduce...</h2>
+            <p>Some key points:</p>
+            <ul>
+                <li>Map-Reduce is a programming model for data processing.</li>
+                <li>Map-Reduce programs can be written in different languages and supported by Hadoop.</li>
+                <li>These programs are inherently parallel, which means they efficiently process huge data.</li>
+            </ul>
+            <p>
+                Hadoop actually processes multiple subsets of data in different processes using all available hardware threads of the machine.
+            </p>
+            <img src="../assets/images/MapReduce_diag.png" alt="Hadoop MapReduce Flow">
+    
+            <h2>Something Came up in Mind 🧐</h2>
+            <p>
+                When dealing with the Map-Reduce programming model, there is something we have to focus on:
+            </p>
+            <ul>
+                <li>
+                    It's hard to create equal subsets of data for processing.  
+                    <br>
+                    <em>Why?</em> It can happen that data is distributed in such an uneven proportion that some nodes deal with a high load while others have less or no data.
+                </li>
+            </ul>
+            <img src="../assets/images/uneven_chunks.png" alt="Uneven Data Chunks">
+    
+            <p>
+                To deal with this scenario, Hadoop creates fixed chunk sizes of data. This helps in utilizing memory properly and ensures that equal data proportions are sent to all processes.  
+                <strong>Note:</strong> In this case, the overall time is majorly dominated by the process with the longest execution time. Also, here we are limited to the processing capacity of a single machine.
+            </p>
+    
+            <ul>
+                <li>Once data is processed by every machine, how to combine this processed data? 🤔</li>
+            </ul>
+            <img src="../assets/images/how_to_merge.png" alt="Combining Data">
+    
+            <p>
+                To understand this, we have to understand the flow of execution:  
+                <strong>MapReduce works by breaking processing into two phases:</strong>
+            </p>
+            <ol>
+                <li>Map Phase</li>
+                <li>Reduce Phase</li>
+            </ol>
+    
+            <p>
+                The Map function is useful when preparing data or removing bad records. It takes input as key-value pairs and outputs results in the same key-value format.  
+                Once the Map function completes its work, before the data is sent to the Reduce function, the Map-Reduce framework processes it (e.g., sorting, grouping) with key-value pairs.
+            </p>
+    
+            <p>
+                At last, the Reduce function works to find results as defined by the query. In code, we divide the task into three smaller subparts:
+            </p>
+            <ul>
+                <li>Map function</li>
+                <li>Reduce function</li>
+                <li>Code to run the job</li>
+            </ul>
+            <p>
+                Since Map-Reduce works with smaller inputs, we need to store data in a distributed filesystem called <strong>Hadoop Distributed Filesystem (HDFS)</strong>.  
+                It helps Hadoop navigate Map-Reduce computations to each machine hosting the part of data.
+            </p>
+    
+            <h2>Data Flow of Hadoop</h2>
+            <p>
+                When Hadoop starts processing, it assigns Map-Reduce jobs (units of work done as per client requirements).  
+                It consists of:
+            </p>
+            <ul>
+                <li>Input data</li>
+                <li>Map-Reduce program</li>
+                <li>Configuration information</li>
+            </ul>
+    
+            <p>Two types of nodes are responsible for job execution:</p>
+            <ul>
+                <li><strong>Job Tracker:</strong> It coordinates all jobs run on the system by task trackers.</li>
+                <li><strong>Task Tracker:</strong> It completes the assigned tasks and sends progress reports to the job tracker.</li>
+            </ul>
+            <img src="../assets/images/job_task_tracker.png" alt="Job and Task Tracker">
+    
+            <h3>Things to Remember:</h3>
+            <ul>
+                <li>If any task fails, the job tracker reschedules the task to another task tracker.</li>
+                <li>Hadoop divides data into smaller pieces of fixed size called "Splits."</li>
+                <li>A good split size should be 64 MB per block, as a higher number of splits results in overhead.</li>
+                <li>It creates a map for each split, which executes the user-defined map function.</li>
+            </ul>
+        </div>
+    </section>    
+
+    <section id="section4" class="section">
+        <div class="container">
+            <h2 class="section-title">Something Comes to My Mind? 💭🧠</h2>
+            <ul class="thought-list">
+                <li>What if the node which is performing the Map-Reduce Job is far away from the data node?</li>
+            </ul>
+            <img src="../assets/images/data_node_far.png" alt="Data Node Far" >
+            <p>
+                One approach to deal with this is to transfer data from the data node to the node performing the Map-Reduce job. 
+                But if we try doing this, it will result in 
+                <span class="highlight">high network load</span> and 
+                <span class="highlight">slow processing</span>.
+            </p>
+            <img src="../assets/images/sending_data_through_network.png" alt="Sending Data Through Network" >
+            <p>
+                Since it is not the best approach, we have another option (like reversing the approach). 
+                What if instead of sending data, we send the map-reduce task (execution program) to the data node? 
+                Since it is relatively much smaller in size, it will not cause any load issue and is more efficient. 
+                Hadoop tries to avoid transferring data over networks by moving the map task to the node where the data is stored. 
+                This approach is called <span class="highlight">Data Locality Optimization</span>. 
+                It improves processing performance (data is processed locally as everything resides in a single node) and reduces congestion.
+            </p>
+            <img src="../assets/images/data_locality_optimization.png" alt="Data Locality Optimization" >
+            <p>
+                To provide fault tolerance and high availability, each data block is replicated to three nodes.
+            </p>
+            <img src="../assets/images/replication_of_data_node.png" alt="Replication of Data Node" >
+            <p>
+                Hadoop always tries to assign map tasks to nodes where data resides. 
+                For example, if data is present in NodeA, NodeB, and NodeC, Hadoop tries to assign the job to NodeA, NodeB, or NodeC directly.
+            </p>
+            <img src="../assets/images/same_map_data_node.png" alt="Same Map Data Node" >
+        </div>
+    
+        <div class="container">
+            <h2 class="section-title">Something in My Mind 🤨</h2>
+            <p>
+                There is definitely a possibility of not being able to assign the same node for mapping and data 
+                because it might be mapped to some other data node. 
+                In this case, Hadoop tries the next best option for assigning mapping. 
+                Let's understand all possible options:
+            </p>
+    
+            <h2 class="section-subtitle">Mapping in Hadoop</h2>
+            <p>
+                Hadoop’s mapping nodes can be assigned in three possible cases. Let's go through each one:
+            </p>
+    
+            <!-- Case 1 -->
+            <div class="case-box">
+                <h3>CASE 1: Data Local Node</h3>
+                <p>
+                    Whenever a job is assigned, Hadoop always first tries to assign the job to the same node where the data resides. 
+                    This is the most efficient case because the data is processed locally, avoiding any network load.
+                </p>
+            </div>
+    
+            <!-- Case 2 -->
+            <div class="case-box">
+                <h3>CASE 2: Rack Local Node</h3>
+                <p>
+                    If the same node is busy or unavailable, Hadoop tries to assign the job to another node within the same rack 
+                    that holds a replica of the data. This is slightly less efficient than Case 1 but still reduces network congestion 
+                    since nodes within the same rack have high-speed connections.
+                </p>
+            </div>
+    
+            <!-- Case 3 -->
+            <div class="case-box">
+                <h3>CASE 3: Off-Rack Node</h3>
+                <p>
+                    If no node within the same rack is available, Hadoop assigns the job to a node outside the rack. 
+                    This is the least efficient scenario since it requires transferring data over the network, 
+                    leading to higher latency and increased network load.
+                </p>
+            </div>
+
+            <img src="../assets/images/map_assign_strategies.png" alt="">
+
+            <p>Things To Remember :
+                <ul>
+                    <li>Map Task outputs is written to local disk instead of HDFS, as they are intermediate results. It finally processed by reduce task and then written to HDFS.</li>
+                    <li>Only map task is capable of using data locality optimization (reduce job will not be capable of using it).</li>
+                    <li>This means that data transfer through network is necessary for reduced task.</li>
+                    <li>finally output given by reduced function is written to HDFS for readablity.</li>
+                </ul>
+            </p>
+            <img src="../assets/images/info_sample.png" alt="">
+        </div>
+    </section>
+    
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Hadoop Learning Guide. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
