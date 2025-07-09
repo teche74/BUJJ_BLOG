@@ -2,61 +2,70 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Buzz Blog</title>
-    <link rel="stylesheet" href="/assets/css/index.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buzz Blog</title>
+  <link rel="stylesheet" href="/assets/css/index.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <div class="glass-floor"></div>
+  <aside class="smart-sidebar">
+    <nav>
+      <ul>
+        <li><a href="/index.html">🏠 Home</a></li>
+        <li><a href="/about.html">📖 About</a></li>
+      </ul>
+    </nav>
+  </aside>
 
-    <aside id="smartSidebar" class="smart-sidebar">
-        <nav>
-            <ul>
-                <li><a href="/index.html">🏠 Home</a></li>
-                <li><a href="/about.html">📖 About</a></li>
-            </ul>
-        </nav>
-    </aside>
+  <header class="logo-bar">
+    ⚡ Buzz Blog
+  </header>
 
+  <section class="hero-section">
+    <h1 id="greeting">Welcome, Learner!</h1>
+    <div class="tagline">Buzz Blog: Learn What Matters ⚡</div>
 
-    <header class="logo-bar">
-        <div class="logo">⚡ Buzz Blog</div>
-    </header>
+    <div class="quote-box" id="quoteBox">"Knowledge is power. Learning is your superpower."</div>
 
-    <section class="hero-section">
-        <div class="hero-content">
-            <h1>Buzz Blog: Learn What Matters</h1>
-            <p>We helps you master it all, one concept at a time.</p>
-            <section class="vertical-wrapper">
-                <div class="nav-arrow up-arrow">▲</div>
+    <svg class="svg-bg" width="300" height="300" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="40" fill="#00c37b" />
+    </svg>
 
-                <section class="vertical-slider" tabindex="0">
-                    <a href="/topics/oops_index.html" class="topic-slide">OOPS</a>
-                    <a href="/topics/Git_Github/vcs_main.html" class="topic-slide">Git</a>
-                    <a href="/topics/databases.html" class="topic-slide">Database Managment System</a>
-                    <a href="/topics/distributed-systems.html" class="topic-slide">Distributed Systems</a>
-                    <a href="/topics/system-design.html" class="topic-slide">System Design</a>
-                    <a href="/topics/hadoop_index.html" class="topic-slide">Hadoop</a>
-                </section>
+    <div class="blog-grid">
+      <a href="/topics/oops_index.html" class="blog-card">
+        <div class="badge">New</div>
+        <h3>🧱 OOPS</h3>
+        <p>Object Oriented Programming explained from scratch.</p>
+      </a>
+      <a href="/topics/Git_Github/vcs_main.html" class="blog-card">
+        <h3>🔧 Git & GitHub</h3>
+        <p>Understand version control like a pro.</p>
+      </a>
+      <a href="/topics/databases.html" class="blog-card">
+        <h3>🗄️ Databases</h3>
+        <p>From SQL to NoSQL, get clarity on data systems.</p>
+      </a>
+      <a href="/topics/distributed-systems.html" class="blog-card">
+        <h3>🌐 Distributed Systems</h3>
+        <p>Scalability, consistency, and system architecture.</p>
+      </a>
+      <a href="/topics/system-design.html" class="blog-card">
+        <div class="badge">Hot</div>
+        <h3>📐 System Design</h3>
+        <p>Design scalable and reliable systems from scratch.</p>
+      </a>
+      <a href="/topics/hadoop_index.html" class="blog-card">
+        <h3>🐘 Hadoop</h3>
+        <p>Learn Big Data processing with Hadoop.</p>
+      </a>
+    </div>
+  </section>
 
-                <div class="nav-arrow down-arrow">▼</div>
-            </section>
+  <script src="/assets/js/index.js"></script>
 
-            <div class="icon-display">
-                <img id="topic-icon" src="/assets/icons/git.png" alt="Topic Icon" />
-            </div>
-        </div>
-
-    </section>
-
-
-
-
-    <script src="/assets/js/index.js" defer></script>
 </body>
 
 </html>

@@ -8,10 +8,10 @@
 html,
 body {
     height: 100%;
-    background: #000;
+    background: #ffffff;
     overflow-x: hidden;
     font-family: 'Inter', sans-serif;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 /* Glass Background with Colored Spots */
@@ -54,7 +54,7 @@ body {
 
 .logo {
     font-size: 1.5rem;
-    color: #fff;
+    color: #000000;
     font-weight: 600;
     background: rgba(255, 255, 255, 0.05);
     padding: 0.5rem 1rem;
@@ -97,7 +97,7 @@ section h2 {
 section p {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: #ccc;
+    color: #000000;
     margin-bottom: 1rem;
 }
 
@@ -105,7 +105,7 @@ section p {
     text-align: center;
     font-size: 2.2rem;
     margin-bottom: 3rem;
-    color: #fff;
+    color: #000000;
 }
 
 /* Timeline style */
@@ -177,7 +177,7 @@ section p {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 18px;
     padding: 4rem 2rem;
-    color: #fff;
+    color: #000000;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
     animation: fadeInUp 0.8s ease both;
     transform: translateY(30px);
@@ -194,7 +194,7 @@ section p {
 .timeline-content h3 {
     font-size: 1.4rem;
     margin-bottom: 0.5rem;
-    color: #fff;
+    color: #000000;
 }
 
 /* Sub-event container */
@@ -227,7 +227,7 @@ section p {
 /* Sub-event heading */
 .sub-event h4 {
     font-size: 1.1rem;
-    color: #fff;
+    color: #000000;
     margin-bottom: 0.4rem;
 }
 
@@ -235,7 +235,7 @@ section p {
 .sub-event p,
 .sub-event li {
     font-size: 0.95rem;
-    color: #ccc;
+    color: #000000;
     line-height: 1.5;
 }
 
@@ -252,7 +252,7 @@ section p {
 .section-title {
     font-size: 2rem;
     text-align: center;
-    color: #fff;
+    color: #000000;
     margin-bottom: 3rem;
 }
 
@@ -308,7 +308,7 @@ section p {
 
 .badge:hover {
     background: #23d5ab33;
-    color: #fff;
+    color: #000000;
     box-shadow: 0 0 10px #23d5ab66;
 }
 
@@ -323,14 +323,14 @@ section p {
 }
 
 .certificate-link:hover {
-    color: #fff;
+    color: #000000;
 }
 
 .certificate-preview {
     margin-top: 1rem;
     border-radius: 12px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 4px 20px rgba(35, 213, 171, 0.1);
 }
 
@@ -364,7 +364,7 @@ section p {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #ccc;
+    color: #000000;
     text-decoration: none;
     font-size: 0.95rem;
     transition: background 0.3s ease, transform 0.2s ease;
@@ -464,8 +464,8 @@ section p {
     /* -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px); */
     transform: translate3d(0px, 0px, 25px);
-    border-left: 1px solid white;
-    border-bottom: 1px solid white;
+    border-left: 8px solid rgb(12, 11, 11);
+    border-bottom: 8px solid rgb(0, 0, 0);
     transition: all 0.5s ease-in-out;
 }
 
@@ -476,7 +476,7 @@ section p {
 
 .refs_content .refs_title {
     display: block;
-    color: white;
+    color: rgb(3, 3, 3);
     font-weight: 900;
     font-size: 20px;
 }
@@ -568,7 +568,7 @@ section p {
 }
 
 .refs_bottom .refs_social-buttons-container .refs_social-button:hover .refs_svg {
-    fill: white;
+    fill: rgb(0, 0, 0);
 }
 
 .refs_bottom .refs_social-buttons-container .refs_social-button:active {
@@ -666,7 +666,7 @@ section p {
 
 .refs_parent:hover .refs_card .refs_bottom .refs_social-buttons-container .refs_social-button {
     transform: translate3d(0, 0, 50px);
-    box-shadow: rgba(5, 71, 17, 0.2) -5px 20px 10px 0px;
+    box-shadow: rgb(255, 255, 255) -5px 20px 10px 0px;
 }
 
 .refs_parent:hover .refs_card .refs_logo .circle2 {
