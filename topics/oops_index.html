@@ -50,7 +50,7 @@
     </p>
 
     <figure class="concept-image">
-      <img src="/assets/images/realworldexample.png" alt="Example of Class from real world object" />
+      <img src="./assets/images/realworldexample.png" alt="Example of Class from real world object" />
       <figcaption class="caption">A real-world analogy: designing the idea of a car (class)</figcaption>
     </figure>
 
@@ -65,7 +65,7 @@
     </ul>
 
     <figure class="concept-image">
-      <img src="/assets/images/classtypes_.png" alt="Types of Class" />
+      <img src="./assets/images/classtypes_.png" alt="Types of Class" />
       <figcaption class="caption">Concrete vs Abstract Class Overview</figcaption>
     </figure>
 
@@ -82,7 +82,7 @@
     </p>
 
     <figure class="concept-image">
-      <img src="/assets/images/object_example.png" alt="Example of Object from real world object" />
+      <img src="./assets/images/object_example.png" alt="Example of Object from real world object" />
       <figcaption class="caption">A real-world car object made from the 'Car' class</figcaption>
     </figure>
 
@@ -146,7 +146,7 @@ class Car {
     </ul>
 
     <figure class="class_compo_image">
-      <img src="/assets/images/data_member.png" alt="Data Members" width="300px" />
+      <img src="./assets/images/data_member.png" alt="Data Members" width="300px" />
       <figcaption class="caption">Data Members (Attributes)</figcaption>
     </figure>
 
@@ -156,7 +156,7 @@ class Car {
     </ul>
 
     <figure class="class_compo_image">
-      <img src="/assets/images/member_function.png" alt="Member Function"/>
+      <img src="./assets/images/member_function.png" alt="Member Function"/>
       <figcaption class="caption">Member Function (Behaviour)</figcaption>
     </figure>
 
@@ -175,7 +175,7 @@ class Car {
     </ul>
 
     <figure class="class_compo_image">
-      <img src="/assets/images/constructor.png" alt="Constructor"  />
+      <img src="./assets/images/constructor.png" alt="Constructor"  />
       <figcaption class="caption">Constructor Example</figcaption>
     </figure>
 
@@ -195,7 +195,7 @@ class Car {
     </ul>
 
     <figure class="class_compo_image">
-      <img src="/assets/images/destructor.png" alt="Destructor"  />
+      <img src="./assets/images/destructor.png" alt="Destructor"  />
       <figcaption class="caption">Destructor Example</figcaption>
     </figure>
 
@@ -216,7 +216,7 @@ class Car {
     </ul>
 
     <figure class="class_compo_image">
-      <img src="/assets/images/access_modifier.png" alt="Access Modifier"  />
+      <img src="./assets/images/access_modifier.png" alt="Access Modifier"  />
       <figcaption class="caption">Access Modifer and Who can Access Them</figcaption>
     </figure>
 
@@ -277,7 +277,7 @@ void setWidth(Box &b, int w) {
     </p>
 
     <figure class="class_compo_image">
-      <img src="/assets/images/inheritence_faily.png.png" alt="Inheritance Example with Family" width="400px"/>
+      <img src="./assets/images/inheritence_faily.png.png" alt="Inheritance Example with Family" width="400px"/>
       <figcaption class="caption">A Child inheriting traits from Mother and Father</figcaption>
     </figure>
 
@@ -296,7 +296,7 @@ class Child : public Mother {
 };
 </code></pre>
     <figure class="class_compo_image">
-          <img src="/assets/images/single_inheritence.png" alt="Inheritance Example with Family"/>
+          <img src="./assets/images/single_inheritence.png" alt="Inheritance Example with Family"/>
           <figcaption class="caption">A Child inheriting hair_color traits from Mother</figcaption>
     </figure>
       </li>
@@ -317,7 +317,7 @@ class Child : public Mother, public Father {
 };
 </code></pre>
     <figure class="class_compo_image">
-          <img src="/assets/images/multiple_inheritence.png" alt="Inheritance Example with Family"/>
+          <img src="./assets/images/multiple_inheritence.png" alt="Inheritance Example with Family"/>
           <figcaption class="caption">A Child inheriting "drive" trait from Father and "cook" trait from Mother</figcaption>
     </figure>
       </li>
@@ -337,7 +337,7 @@ class Child : public Mother {
 };
 </code></pre>
     <figure class="class_compo_image">
-          <img src="/assets/images/multilevel_inheritence.png" alt="Inheritance Example with Family"/>
+          <img src="./assets/images/multilevel_inheritence.png" alt="Inheritance Example with Family"/>
           <figcaption class="caption">A Child inheriting "cook" trait from Mother which is inherited from GrandMother</figcaption>
     </figure>
       </li>
@@ -354,7 +354,7 @@ class Daughter : public Mother { /* ... */ };
 // Both Son and Daughter get thick hair()
 </code></pre>
     <figure class="class_compo_image">
-          <img src="/assets/images/heirarchial_inheritence.png" alt="Inheritance Example with Family"/>
+          <img src="./assets/images/heirarchial_inheritence.png" alt="Inheritance Example with Family"/>
           <figcaption class="caption">Both Son and Daughter get hair type from Mother</figcaption>
     </figure>
       </li>
@@ -370,7 +370,7 @@ class ColoredRectangle : public Rectangle, public Color { /* ... */ };
 </code></pre>
       </li>
       <figure class="class_compo_image">
-          <img src="/assets/images/hybrid_inheritence.png" alt="Inheritance Example with Family"/>
+          <img src="./assets/images/hybrid_inheritence.png" alt="Inheritance Example with Family"/>
           <figcaption class="caption">Exmaple of Hybrid Inheritence</figcaption>
     </figure>
     </ul>
@@ -380,7 +380,7 @@ class ColoredRectangle : public Rectangle, public Color { /* ... */ };
       Sometimes, multiple inheritance can cause confusion. Imagine both <code>Mother</code> and <code>Father</code> inherit from <code>Grandmother</code>, and then <code>Child</code> inherits from both <code>Mother</code> and <code>Father</code>. Now, <code>Child</code> has two copies of <code>Grandmother</code>! This is called the <strong>diamond problem</strong>.
     </p>
     <figure class="concept-image">
-      <img src="/assets/images/diamond_problem_family.png" alt="Diamond Problem with Family" />
+      <img src="./assets/images/diamond_problem_family.png" alt="Diamond Problem with Family" />
       <figcaption class="caption">The Diamond Problem: Child gets two Grandmothers!</figcaption>
     </figure>
     <pre class="code-block"><code>// Diamond Problem Example
@@ -428,14 +428,14 @@ child.Father::cook(); // Calls cook() from Father's Grandmother
       style="width: 100%; max-width: 900px; height: 500px; overflow: hidden; position: relative; border: 2px solid #ccc; border-radius: 12px; margin: 20px auto;">
 
       <div id="transform-wrapper" style="transform: scale(0.9); transform-origin: center; cursor: grab;">
-        <img id="zoomable-image" src="/assets/exclidraw_items/oops.svg" alt="OOP Recap" width="900" height="600"
+        <img id="zoomable-image" src="./assets/exclidraw_items/oops.svg" alt="OOP Recap" width="900" height="600"
           style="display: block;" />
       </div>
 
     </div>
   </div>
 
-  <script src="/assets/js/oops_index.js"></script>
+  <script src="./assets/js/oops_index.js"></script>
 </body>
 
 </html>
