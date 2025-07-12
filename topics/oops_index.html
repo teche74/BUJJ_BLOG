@@ -136,6 +136,13 @@ delete myCarPtr; // You must delete it manually
     <ul>
       <li><strong>Attributes (or Properties):</strong> These are the data or characteristics of the class, like a car's
         color or model. They define what the object can hold.</li>
+        <pre class="code-block"><code>// Attribute example
+class Car {
+  public:
+    string color;
+    int model;
+};
+</code></pre>
     </ul>
 
     <figure class="class_compo_image">
@@ -153,6 +160,15 @@ delete myCarPtr; // You must delete it manually
       <figcaption class="caption">Member Function (Behaviour)</figcaption>
     </figure>
 
+    <pre class="code-block"><code>// Method example
+class Car {
+  public:
+    void honk() {
+      cout << "Beep!";
+    }
+};
+</code></pre>
+
     <ul>
       <li><strong>Constructors:</strong> These are special methods that run when you create an object. They set up the
         initial state of the object, like setting the car's color or model when you create a new car object.</li>
@@ -163,6 +179,16 @@ delete myCarPtr; // You must delete it manually
       <figcaption class="caption">Constructor Example</figcaption>
     </figure>
 
+    <pre class="code-block"><code>// Constructor example
+class Car {
+  public:
+    string color;
+    Car(string c) {
+      color = c;
+    }
+};
+</code></pre>
+
     <ul>
       <li><strong>Destructors:</strong> These are special methods that run when an object is destroyed. They clean up
         resources or perform any necessary final actions, like releasing memory or closing files.</li>
@@ -172,6 +198,15 @@ delete myCarPtr; // You must delete it manually
       <img src="/assets/images/destructor.png" alt="Destructor"  />
       <figcaption class="caption">Destructor Example</figcaption>
     </figure>
+
+    <pre class="code-block"><code>// Destructor example
+class Car {
+  public:
+    ~Car() {
+      // cleanup code
+    }
+};
+</code></pre>
 
 
     <ul>
@@ -185,11 +220,31 @@ delete myCarPtr; // You must delete it manually
       <figcaption class="caption">Access Modifer and Who can Access Them</figcaption>
     </figure>
 
+    <pre class="code-block"><code>// Access Modifiers example
+class Car {
+  private:
+    int speed;
+  public:
+    void setSpeed(int s) { speed = s; }
+};
+</code></pre>
+
     <ul>
       <li><strong>Static Members and Functions:</strong> These belong to the class itself, not to any specific object. A
         <strong>static attribute</strong> is shared by all objects of the class, and a <strong>static method</strong>
         can be called without creating an object. For example, you might use a static variable to count how many objects
         have been created.</li>
+    <pre class="code-block"><code>// Static Member/Function example
+class Car {
+  public:
+    static int count;
+    Car() { count++; }
+    static void showCount() {
+      cout << count;
+    }
+};
+int Car::count = 0;
+</code></pre>
     </ul>
 
     <ul>
@@ -197,7 +252,166 @@ delete myCarPtr; // You must delete it manually
         access the private and protected members of another class. They are useful when two or more classes need to work
         closely together and share internal details, but you still want to keep those details hidden from the rest of
         the code.</li>
+    <pre class="code-block"><code>// Friend Function example
+class Box {
+  private:
+    int width;
+  public:
+    friend void setWidth(Box &b, int w);
+};
+void setWidth(Box &b, int w) {
+  b.width = w;
+}
+</code></pre>
     </ul>
+  </div>
+
+  <!-- Inheritance -->
+  <div class="inheritance cloud-box">
+    <h1>Inheritance</h1>
+    <p>
+      <strong>Inheritance</strong> is like passing down traits from parents to children, but in code! It lets you create a new class (called a <strong>derived</strong> or <strong>child</strong> class) based on an existing class (the <strong>base</strong> or <strong>parent</strong> class). The child class automatically gets all the attributes and methods of the parent, and you can add more or change them as needed.
+    </p>
+    <p>
+      This helps you avoid repeating code and makes it easier to organize related classes. For example, you can have <code>Mother</code> and <code>Father</code> classes, and then create a <code>Child</code> class that inherits from them.
+    </p>
+
+    <figure class="class_compo_image">
+      <img src="/assets/images/inheritence_faily.png.png" alt="Inheritance Example with Family" width="400px"/>
+      <figcaption class="caption">A Child inheriting traits from Mother and Father</figcaption>
+    </figure>
+
+    <h2>Types of Inheritance</h2>
+    <ul>
+      <li>
+        <strong>Single Inheritance:</strong> A class inherits from one base class.<br>
+        <em>Example: Child inherits only from Mother.</em>
+        <pre class="code-block"><code>// Single Inheritance
+class Mother {
+  public:
+    void hair_color() { /* ... */ }
+};
+class Child : public Mother {
+  // Child gets hair_color() from Mother
+};
+</code></pre>
+    <figure class="class_compo_image">
+          <img src="/assets/images/single_inheritence.png" alt="Inheritance Example with Family"/>
+          <figcaption class="caption">A Child inheriting hair_color traits from Mother</figcaption>
+    </figure>
+      </li>
+      <li>
+        <strong>Multiple Inheritance:</strong> A class inherits from more than one base class.<br>
+        <em>Example: Child inherits from both Mother and Father.</em>
+        <pre class="code-block"><code>// Multiple Inheritance
+class Mother {
+  public:
+    void cook() { /* ... */ }
+};
+class Father {
+  public:
+    void drive() { /* ... */ }
+};
+class Child : public Mother, public Father {
+  // Child gets cook() from Mother and drive() from Father
+};
+</code></pre>
+    <figure class="class_compo_image">
+          <img src="/assets/images/multiple_inheritence.png" alt="Inheritance Example with Family"/>
+          <figcaption class="caption">A Child inheriting "drive" trait from Father and "cook" trait from Mother</figcaption>
+    </figure>
+      </li>
+      <li>
+        <strong>Multilevel Inheritance:</strong> A class is derived from another derived class (like a chain).<br>
+        <em>Example: Grandmother → Mother → Child.</em>
+        <pre class="code-block"><code>// Multilevel Inheritance
+class Grandmother {
+  public:
+    void cook() { /* ... */ }
+};
+class Mother : public Grandmother {
+  // inherits cook()
+};
+class Child : public Mother {
+  // inherits cook() from Grandmother through Mother
+};
+</code></pre>
+    <figure class="class_compo_image">
+          <img src="/assets/images/multilevel_inheritence.png" alt="Inheritance Example with Family"/>
+          <figcaption class="caption">A Child inheriting "cook" trait from Mother which is inherited from GrandMother</figcaption>
+    </figure>
+      </li>
+      <li>
+        <strong>Hierarchical Inheritance:</strong> Multiple classes inherit from the same base class.<br>
+        <em>Example: Both Son and Daughter inherit from Mother.</em>
+        <pre class="code-block"><code>// Hierarchical Inheritance
+class Mother {
+  public:
+    void hair_type() { /* ... */ }
+};
+class Son : public Mother { /* ... */ };
+class Daughter : public Mother { /* ... */ };
+// Both Son and Daughter get thick hair()
+</code></pre>
+    <figure class="class_compo_image">
+          <img src="/assets/images/heirarchial_inheritence.png" alt="Inheritance Example with Family"/>
+          <figcaption class="caption">Both Son and Daughter get hair type from Mother</figcaption>
+    </figure>
+      </li>
+      <li>
+        <strong>Hybrid Inheritance:</strong> A combination of two or more types of inheritance.<br>
+        <em>Example: A <b>ColoredRectangle</b> class inherits from both <b>Rectangle</b> (which inherits from <b>Shape</b>) and <b>Color</b>.</em>
+        <pre class="code-block"><code>// Hybrid Inheritance Example
+class Shape { /* ... */ };
+class Rectangle : public Shape { /* ... */ };
+class Color { /* ... */ };
+class ColoredRectangle : public Rectangle, public Color { /* ... */ };
+// ColoredRectangle inherits from both Rectangle (which inherits Shape) and Color
+</code></pre>
+      </li>
+      <figure class="class_compo_image">
+          <img src="/assets/images/hybrid_inheritence.png" alt="Inheritance Example with Family"/>
+          <figcaption class="caption">Exmaple of Hybrid Inheritence</figcaption>
+    </figure>
+    </ul>
+
+    <h2>The Diamond Problem</h2>
+    <p>
+      Sometimes, multiple inheritance can cause confusion. Imagine both <code>Mother</code> and <code>Father</code> inherit from <code>Grandmother</code>, and then <code>Child</code> inherits from both <code>Mother</code> and <code>Father</code>. Now, <code>Child</code> has two copies of <code>Grandmother</code>! This is called the <strong>diamond problem</strong>.
+    </p>
+    <figure class="concept-image">
+      <img src="/assets/images/diamond_problem_family.png" alt="Diamond Problem with Family" />
+      <figcaption class="caption">The Diamond Problem: Child gets two Grandmothers!</figcaption>
+    </figure>
+    <pre class="code-block"><code>// Diamond Problem Example
+class Grandmother { public: void cook() { /* ... */ } };
+class Mother : public Grandmother { };
+class Father : public Grandmother { };
+class Child : public Mother, public Father { };
+// Child has two copies of Grandmother::cook()
+</code></pre>
+
+    <h2>Solving the Diamond Problem</h2>
+    <p>
+      To fix this, C++ lets you use <strong>virtual base classes</strong>. By declaring the inheritance as <code>virtual</code>, you make sure only one copy of the base class is shared, no matter how many times it appears in the hierarchy.
+    </p>
+    <pre class="code-block"><code>// Solution with Virtual Base Class
+class Grandmother { public: void cook() { /* ... */ } };
+class Mother : virtual public Grandmother { };
+class Father : virtual public Grandmother { };
+class Child : public Mother, public Father { };
+// Only one copy of Grandmother in Child
+</code></pre>
+    <p>
+      If you ever need to specify which parent's method to use (in case of ambiguity), you can use the <strong>scope resolution operator</strong> (<code>::</code>):
+    </p>
+    <pre class="code-block"><code>// Using scope resolution
+child.Mother::cook(); // Calls cook() from Mother's Grandmother
+child.Father::cook(); // Calls cook() from Father's Grandmother
+</code></pre>
+    <p>
+      <em>In summary: inheritance helps you reuse code, but be careful with multiple inheritance! Virtual base classes and the scope resolution operator help you avoid confusion and keep things tidy—even in a big family tree.</em>
+    </p>
   </div>
 
 
